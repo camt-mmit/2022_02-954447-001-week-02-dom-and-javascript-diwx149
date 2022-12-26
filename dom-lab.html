@@ -21,37 +21,29 @@
 <body>
     <!--Template-->
     <template id="tmp-section">
-
         <div class="cmp-section-container">
-            <label>
-                <b class="cmp-section-title">SECTION <span class="cmp-section-no cl-number"></span></b>
-            </label>
-            <button type="button" class="cmd-remove-section cl-warn">
-                <i class="material-icons">delete_forever</i>
-            </button>
+            <section class="cmp-input-section">
 
-            <div class="cmp-inputs-container">
                 <label>
-
-                    <b class="cmp-input-title"><span class="cl-filler"></span>Result</b>
-                    <output class="cmp-result cl-number">0</output>
+                    <b class="cmp-section-title">SECTION <span class="cmp-section-no cl-number"></span></b>
                 </label>
-            </div>
+                <button type="button" class="cmd-remove-section cl-warn">
+                    <i class="material-icons">delete_forever</i>
+                </button><br>
+                <button type="button" class="cmd-add-input cl-primary">
+                    <i class="material-icons">add</i>
+                    INPUT
+                </button>
+                <div class="cmp-inputs-container"></div>
+                <div class="cmp-output-container">
+                    <label>
+
+                        <b class="cmp-input-title"><span class="cl-filler"></span>Result</b>
+                        <output class="cmp-result cl-number">0</output>
+                    </label>
+                </div>
+            </section>
         </div>
-        <section class="cmp-input-section">
-            <button type="button" class="cmd-add-input cl-primary">
-                <i class="material-icons">add</i>
-                INPUT
-            </button>
-            <div class="cmp-inputs-container"></div>
-            <div class="cmp-output-container">
-                <label>
-
-                    <b class="cmp-input-title"><span class="cl-filler"></span>Result</b>
-                    <output class="cmp-result cl-number">0</output>
-                </label>
-            </div>
-        </section>
 
     </template>
     <template id="tmp-input">

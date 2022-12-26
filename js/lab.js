@@ -54,21 +54,18 @@ function add(inputsContainer, resultComponent, template) {
   computeTotal(inputsContainer, resultComponent);
 }
 
-function addSection(
-  sectionsContainer,
-  sectiontemplate,
-  inputsContainer,
-  inputtemplate,
-) {
+function addSection(sectionsContainer, sectiontemplate, inputtemplate) {
   // add section
   const fragment = sectiontemplate.content.cloneNode(true);
-  const inputsContainer = fragment.querySelector('cmp-sections-container'); // const inputfragment = inputtemplate.content.cloneNode(true);
+  // const inputsSection = fragment.querySelector('cmp-inputs-container');
+  const sectionContainer = fragment.querySelector('.cmp-input-section');
+  // const inputfragment = inputtemplate.content.cloneNode(true);
 
   sectionsContainer.append(fragment);
   // inputsContainer.append(inputfragment);
 
   rebuildIndexSection(sectionsContainer);
-  add(inputsContainer);
+  assignInput(sectionContainer, inputtemplate);
   // rebuildIndex(inputsContainer);
   //   computeTotal(inputsContainer, resultComponent);
 }
@@ -89,10 +86,12 @@ function removeSection(sectionsContainer, sectionContainer) {
   //   computeTotal(sectionsContainer, resultComponent);
 }
 
-export function assignInput(inputTemplate, mainContainer) {
-  const inputSection = mainContainer.querySelector('.cmp-input-section');
-  const inputsContainer = inputSection.querySelector('.cmp-inputs-container');
-  const resultComponent = inputSection.querySelector('.cmp-result');
+export function assignInput(sectionContainer, inputTemplate, mainContainer) {
+  // console.debug(mainContainer);
+  const inputsContainer = sectionContainer.querySelector(
+    '.cmp-inputs-container',
+  );
+  const resultComponent = sectionContainer.querySelector('.cmp-result');
   // sectionSection.addEventListener('click', (ev) => {
   //   // section buton
   //   if (ev.target.matches('.cmd-add-section')) {
@@ -106,7 +105,7 @@ export function assignInput(inputTemplate, mainContainer) {
   //   }
   // });
 
-  inputSection.addEventListener('click', (ev) => {
+  sectionContainer.addEventListener('click', (ev) => {
     // INPUT button
     if (ev.target.matches('.cmd-add-input')) {
       add(inputsContainer, resultComponent, inputTemplate);
@@ -119,7 +118,6 @@ export function assignInput(inputTemplate, mainContainer) {
       computeTotal(inputsContainer, resultComponent);
     }
   });
-
   inputsContainer.addEventListener('click', (ev) => {
     //remove number box
     if (ev.target.matches('.cmd-remove-input')) {
@@ -128,7 +126,7 @@ export function assignInput(inputTemplate, mainContainer) {
     }
   });
 
-  // add(inputsContainer, resultComponent, inputTemplate);
+  add(inputsContainer, resultComponent, inputTemplate);
   // addmerge(
   //   inputsContainer,
   //   resultComponent,
@@ -138,21 +136,16 @@ export function assignInput(inputTemplate, mainContainer) {
   // );
 }
 export function assignSection(sectionTemplate, inputTemplate, mainContainer) {
-  const sectionSection = mainContainer.querySelector('.cmp-section-section');
-  const inputsContainer = mainContainer.querySelector('.cmp-inputs-container');
-  const sectionsContainer = sectionSection.querySelector(
+  // const sectionSection = mainContainer.querySelector('.cmp-section-section');
+  // const inputsContainer = mainContainer.querySelector('.cmp-inputs-container');
+  const sectionsContainer = mainContainer.querySelector(
     '.cmp-sections-container',
   );
   // console.debug(sectionsContainer);
-  sectionSection.addEventListener('click', (ev) => {
+  mainContainer.addEventListener('click', (ev) => {
     // section buton
     if (ev.target.matches('.cmd-add-section')) {
-      addSection(
-        sectionsContainer,
-        sectionTemplate,
-        inputsContainer,
-        inputTemplate,
-      );
+      addSection(sectionsContainer, sectionTemplate, inputTemplate);
     }
   });
   sectionsContainer.addEventListener('click', (ev) => {
@@ -162,10 +155,5 @@ export function assignSection(sectionTemplate, inputTemplate, mainContainer) {
       removeSection(sectionsContainer, sectionContainer);
     }
   });
-  // addSection(
-  //   inputsContainer,
-  //   inputTemplate,
-  //   sectionsContainer,
-  //   sectionTemplate,
-  // );
+  addSection(sectionsContainer, sectionTemplate, inputTemplate);
 }
