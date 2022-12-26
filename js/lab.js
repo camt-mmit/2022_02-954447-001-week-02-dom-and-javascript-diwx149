@@ -43,25 +43,6 @@ function rebuildIndexSection(sectionsContainer) {
     },
   );
 }
-// function addmerge(
-//   inputsContainer,
-//   resultComponent,
-//   inputtemplate,
-//   sectionsContainer,
-//   sectiontemplate,
-// ) {
-//   const fragmentnumber = inputtemplate.content.cloneNode(true);
-
-//   inputsContainer.append(fragmentnumber);
-
-//   rebuildIndex(inputsContainer);
-//   computeTotal(inputsContainer, resultComponent);
-//   const fragmentsection = sectiontemplate.content.cloneNode(true);
-
-//   sectionsContainer.append(fragmentsection);
-
-//   rebuildIndexSection(sectionsContainer);
-// }
 
 function add(inputsContainer, resultComponent, template) {
   // add number box
@@ -73,16 +54,6 @@ function add(inputsContainer, resultComponent, template) {
   computeTotal(inputsContainer, resultComponent);
 }
 
-// function addSection(sectionsContainer, template) {
-//   // add section
-//   const fragment = template.content.cloneNode(true);
-
-//   sectionsContainer.append(fragment);
-
-//   rebuildIndexSection(sectionsContainer);
-//   //   computeTotal(inputsContainer, resultComponent);
-// }
-
 function addSection(
   sectionsContainer,
   sectiontemplate,
@@ -91,12 +62,13 @@ function addSection(
 ) {
   // add section
   const fragment = sectiontemplate.content.cloneNode(true);
-  const inputSection = fragment.querySelector('cmp-sections-container'); // const inputfragment = inputtemplate.content.cloneNode(true);
+  const inputsContainer = fragment.querySelector('cmp-sections-container'); // const inputfragment = inputtemplate.content.cloneNode(true);
 
   sectionsContainer.append(fragment);
   // inputsContainer.append(inputfragment);
 
   rebuildIndexSection(sectionsContainer);
+  add(inputsContainer);
   // rebuildIndex(inputsContainer);
   //   computeTotal(inputsContainer, resultComponent);
 }

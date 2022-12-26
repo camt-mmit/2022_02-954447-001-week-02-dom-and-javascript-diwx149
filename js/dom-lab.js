@@ -6,5 +6,5 @@ document.addEventListener('DOMContentLoaded', () => {
   const inputTemplate = document.querySelector('template#tmp-input');
   const sectionTemplate = document.querySelector('template#tmp-section');
   assignInput(inputTemplate, mainContainer);
-  assignSection(sectionTemplate, inputTemplate, mainContainer);
+  assignSection(sectionTemplate, mainContainer);
 });
